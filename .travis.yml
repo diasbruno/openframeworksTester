@@ -1,0 +1,26 @@
+language: 
+    - cpp
+
+compiler:
+    - gcc
+
+before_install:
+    - echo "cloning openframeworks..."
+    - git clone http://github.com/openframeworks/openframeworks OF
+    - echo "compiling openframeworks..."
+    - sudo ./compile_openframeworks.sh
+
+script:
+    - echo "compiling tests.."
+    - make 
+
+branches:
+    only:
+        - develop
+
+notifications:
+    email:
+        recipients:
+            - dias.h.bruno@gmail.com
+        on_success: change
+        on_failure: always
